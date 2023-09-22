@@ -43,7 +43,7 @@ function App() {
         <button onClick={addToDo} type="button" className="btn">
           Add note
         </button>
-        <button onClick={clearArray} type="button" className="btn">
+        <button onClick={clearArray} type="button" className="btn-vio">
           Clear List
         </button>
       </div>
@@ -53,11 +53,11 @@ function App() {
           {
             array.map((elem, idx) => (
               <li key={idx}>
-                <span onClick={() => changeColor(idx)} style={{color: elem.isDone === false ? 'red' : 'green'}}>
+                <span className="task-item" onClick={() => changeColor(idx)} style={{color: elem.isDone === false ? 'red' : 'green'}}>
                   {elem.text}
                 </span>
                 <button onClick={() => clearEl(idx)}>
-                  x
+                  X
                 </button>
               </li>
             ))

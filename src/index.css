@@ -1,4 +1,140 @@
 body {
   text-align: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(223, 199, 239);
+}
+.App{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.input-wrapper{
+  width: 30%;
+  height: 300px;
+  box-shadow: 10px 5px 5px rgb(114, 31, 142);
+  border: 2px solid rgb(72, 8, 94);
+  background-color: rgb(235, 219, 243);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
 }
 
+.input-wrapper h2{
+  color: blueviolet;
+}
+.input-wrapper p{
+  color: rgb(80, 27, 115);
+  font-weight: 700;
+}
+.input-wrapper input{
+  width: 80%;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid rgb(197, 152, 228);
+  box-shadow: 1px 1px 1px 1px  rgb(213, 183, 233);
+  color: rgb(58, 7, 106);
+  font-weight: 700;
+}
+.input-wrapper input::placeholder{
+  color: rgb(58, 7, 106);
+  font-weight: 700;
+}
+
+
+
+
+.result-wrapper{
+  width: 30%;
+  height: auto;
+  box-shadow: 10px 5px 5px rgb(114, 31, 142);
+  border: 2px solid rgb(72, 8, 94);
+  background-color: rgb(235, 219, 243);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  margin-top: 5%;
+}
+.result-wrapper h2{
+  color: blueviolet;
+}
+.btn{
+  width: 82%;
+  height: 40px;
+  margin-top: 3%;
+  border-radius: 5px;
+  background-color: rgb(205, 167, 241);
+  color: white;
+  font-size: 18px;
+  border: 2px solid rgb(153, 82, 201);
+  box-shadow: 1px 1px 1px 1px  rgb(153, 82, 201);
+}
+.btn:hover{
+  background-color: white ;
+  color: blueviolet;
+}
+.btn-vio{
+  width: 82%;
+  height: 40px;
+  margin-top: 3%;
+  border-radius: 5px;
+  background-color: rgb(91, 13, 165);
+  color: white;
+  font-size: 18px;
+  border: 2px solid rgb(91, 13, 165);
+  box-shadow: 1px 1px 1px 1px rgb(91, 13, 165);
+}
+.btn-vio:hover{
+  background-color: white ;
+  color: rgb(91, 13, 165);
+}
+
+.task-item{
+  font-size: 20px;
+  font-weight: 700;
+  
+}
+.result-wrapper ul{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.result-wrapper li{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 4%;
+}
+.result-wrapper button{
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: blueviolet;
+  color: white;
+  font-weight: 700;
+  border: 2px solid blueviolet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media(max-width:768px){
+  .input-wrapper {
+    width: 70%;
+  }
+  .result-wrapper{
+    width: 70%;
+  }
+}
+@media(max-width:489px){
+  .input-wrapper {
+    width: 90%;
+    margin: 5%;
+  }
+  .result-wrapper{
+    width: 90%;
+  }
+}
