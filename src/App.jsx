@@ -21,12 +21,18 @@ function App() {
   }
 
   React.useEffect(() => {
-    setArray(JSON.parse(localStorage.getItem('toDoListReactJS')))
+    if(localStorage.getItem('toDoListReactJS')){
+
+      setArray(JSON.parse(localStorage.getItem('toDoListReactJS')))
+
+    }
+    
   }, [])
 
 
   function clearArray(){
     setArray([])
+    
     localStorage.setItem('toDoListReactJS', JSON.stringify([]) )
   }
 
