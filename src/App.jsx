@@ -1,22 +1,33 @@
 import React from "react";
 
-
+import ToDoForm from "./components/ToDoForm";
+import ToDoList from "./components/ToDoList";
 
 function App() {
 
 
-  const [array, setArray] = React.useState([{text: 'hhhh', isDone: true},{text: 'ggggg', isDone: false},{text: 'ddddd', isDone: false}]);
+  const [array, setArray] = React.useState([]);
   const [input, setInput] =  React.useState('');
  
+ 
   function addToDo(){
+    if (input.replace(/ /g, '') === '') return
     const newArray = [...array, {text:input, isDone:false }]
     setArray(newArray)
+    localStorage.setItem('toDoListReactJS', JSON.stringify(newArray) )
+    
    
     setInput('')
   }
 
+  React.useEffect(() => {
+    setArray(JSON.parse(localStorage.getItem('toDoListReactJS')))
+  }, [])
+
+
   function clearArray(){
     setArray([])
+    localStorage.setItem('toDoListReactJS', JSON.stringify([]) )
   }
 
   
@@ -24,6 +35,8 @@ function App() {
     const newArr = [...array];
     newArr.splice(idx, 1)
     setArray(newArr)
+
+    localStorage.setItem('toDoListReactJS', JSON.stringify(newArr) )
   }
 
   function changeColor(idx){
@@ -31,39 +44,15 @@ function App() {
     
     newArr[idx].isDone === false ? newArr[idx].isDone = true : newArr[idx].isDone = false
     setArray(newArr)
+    localStorage.setItem('toDoListReactJS', JSON.stringify(newArr) )
+
+
   }
 
   return (
     <div className="App">
-      <div className="input-wrapper">
-        <h2>To Do List</h2>
-        <p>White note</p>
-        
-        <input value={input} onChange={(e) => setInput(e.target.value)} type="text" placeholder="Enter something" required />
-        <button onClick={addToDo} type="button" className="btn">
-          Add note
-        </button>
-        <button onClick={clearArray} type="button" className="btn-vio">
-          Clear List
-        </button>
-      </div>
-      <div className="result-wrapper">
-        <h2>Your notes</h2>
-        <ul>
-          {
-            array.map((elem, idx) => (
-              <li key={idx}>
-                <span className="task-item" onClick={() => changeColor(idx)} style={{color: elem.isDone === false ? 'red' : 'green'}}>
-                  {elem.text}
-                </span>
-                <button onClick={() => clearEl(idx)}>
-                  X
-                </button>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+      <ToDoForm value={input} setInput={setInput} addToDo ={addToDo} clearArray={clearArray} />
+     <ToDoList changeColor={changeColor } clearEl={clearEl} array={array}/>
 
     </div>
   );
